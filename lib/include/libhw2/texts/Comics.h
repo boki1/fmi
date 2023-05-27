@@ -2,26 +2,33 @@
 #define FMI_OOP_HW2_COMICS_H
 
 #include <libhw2/tags/AuthoredTextTag.h>
-#include <libhw2/tags/LibraryTextTag.h>
 #include <libhw2/tags/PeriodicalTextTag.h>
 #include <libhw2/texts/Text.h>
 
 namespace libhw2 {
 
-class Comics : public Text, LibraryTextTag, AuthoredTextTag, PeriodicalTextTag {
-public:
-	Comics(const LibraryTextTag& library_tag, const PeriodicalTextTag& periodical_tag, const AuthoredTextTag& authored_tag)
-		: Text {}
-		, LibraryTextTag { library_tag }
-		, AuthoredTextTag { authored_tag }
-		, PeriodicalTextTag { periodical_tag }
-	{
-	}
+class Comics : public Text, public AuthoredTextTag, public PeriodicalTextTag {
 
-	Comics(const Comics&) = default;
-	Comics& operator=(const Comics&) = default;
+  // FIXME:
+  // friend class ComicsBuilder;
+  // private:
+ public:
+  Comics(Text&& text, const PeriodicalTextTag& periodical_tag,
+         const AuthoredTextTag& authored_tag)
+      : Text{std::move(text)},
+        AuthoredTextTag{authored_tag},
+        PeriodicalTextTag{periodical_tag} {}
+
+  virtual ~Comics() noexcept = default;
+
+ public:
+  Comics(const Comics&) = default;
+  Comics& operator=(const Comics&) = default;
+
+  Comics(Comics&&) noexcept = default;
+  Comics& operator=(Comics&&) noexcept = default;
 };
 
-}
+}  // namespace libhw2
 
-#endif // FMI_OOP_HW2_COMICS_H
+#endif  // FMI_OOP_HW2_COMICS_H
