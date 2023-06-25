@@ -1,0 +1,3 @@
+[submodule "hw1/linearcodes"]
+	path = hw1/linearcodes
+	url = git@github.com:boki1/patrick.git
