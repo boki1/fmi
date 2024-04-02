@@ -8,3 +8,4 @@ The different subjects are stored under different branches.
 - [Intro to Programming](https://github.com/boki1/fmi/tree/intro)
 - [Data structures Programming](https://github.com/boki1/fmi/tree/ds)
 - [Coding theory](https://github.com/boki1/fmi/tree/coding-theory)
+- [Design & Algorithm Analysis](https://github.com/boki1/fmi/tree/daa)
